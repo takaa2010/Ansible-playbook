@@ -1,0 +1,29 @@
+---
+- name: Update web servers
+  hosts: web
+
+  tasks:
+  - name: Ensure Web Directory Created
+    file:
+      path: /home/centos/web
+      state: directory
+   
+  - name: Ensure File Downloaded
+    get_url:
+      url: https://filesamples.com/samples/document/txt/sample3.txt
+      dest: /home/centos
+
+- name: Update app servers
+  hosts: app
+
+  tasks:
+  - name: Ensure App Directory Created
+    file:
+      path: /home/centos/app
+      state: directory
+
+  - name: Ensure File Downloaded
+    get_url:
+      url: https://filesamples.com/samples/document/txt/sample3.txt
+      dest: /home/centos
+...
