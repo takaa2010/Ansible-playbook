@@ -1,0 +1,17 @@
+---
+- name: Update web servers
+  hosts: n1
+  become: yes
+
+  tasks:
+  - name: Ensure Git Installed
+    yum:
+      name: git
+      state: installed
+   
+  - name: Ensure Food Updated 
+    git:
+      repo: https://github.com/ravi2krishna/food.git
+      dest: /var/www/html
+
+...
